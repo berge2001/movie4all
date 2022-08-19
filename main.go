@@ -1,12 +1,12 @@
 package main
 
 import (
-        "fmt"
-        "regexp"
-        "encoding/json"
-        "log"
-        "net/http"
-        "io/ioutil"
+    "fmt"
+    "regexp"
+    "encoding/json"
+    "log"
+    "net/http"
+    "io/ioutil"
 	"os"
 	"os/exec"
 	"github.com/web3-storage/go-w3s-client"
@@ -79,8 +79,19 @@ func handle(url string){
     cmd = exec.Command("wget", "--timeout=30", "-O", "download.mp4", url)
     cmd.Run()
 
+
+	var position string
+	
+	if size := strings.Contains(url, "540P"); size{
+		position = "delogo=x=64:y=2:w=560:h=54"
+	}else if size := strings.Contains(url, "720P"); size{
+		position = "delogo=x=64:y=2:w=650:h=80"
+	}else{
+		position = "delogo=x=380:y=20:w=1100:h=225"
+	}
+
 		
-    cmd = exec.Command("bash", "autodelogo.sh")
+    cmd = exec.Command("bash", "autodelogo.sh", position)
     cmd.Run()
 
     tbn, err := gettbn()
