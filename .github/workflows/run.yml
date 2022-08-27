@@ -13,7 +13,7 @@ jobs:
                         MODE: all
                         LISTS: 6
                         COUNT: 1
-                        START: https://zxzj.vip/video/3193-1-
+                        START: https://zxzj.vip/video/3356-1-
                 steps:
                 - name: setup go
                   uses: actions/checkout@v2
